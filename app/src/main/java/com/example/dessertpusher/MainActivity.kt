@@ -12,6 +12,8 @@ import com.example.dessertpusher.databinding.ActivityMainBinding
 import timber.log.Timber
 
 const val KEY_REVENUE = "key_revenue"
+const val KEY_DESSERTS_SOLD = "desserts_sold"
+const val KEY_DESSERT_TIMER = "dessert_timer"
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,6 +64,8 @@ class MainActivity : AppCompatActivity() {
 
         savedInstanceState?.let {
             revenue = savedInstanceState.getInt(KEY_REVENUE)
+            dessertsSold = savedInstanceState.getInt(KEY_DESSERTS_SOLD)
+            dessertTimer.secondsCount =savedInstanceState.getInt(KEY_DESSERT_TIMER)
         }
 
         // Set the TextViews to the right values
@@ -75,6 +79,8 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt(KEY_REVENUE, revenue)
+        outState.putInt(KEY_DESSERTS_SOLD, dessertsSold)
+        outState.putInt(KEY_DESSERT_TIMER, dessertTimer.secondsCount)
         Timber.i("onSaveInstanceState called!")
     }
 
